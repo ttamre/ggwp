@@ -43,6 +43,3 @@ See also the list of [contributors](https://github.com/ttamre/ggwp/graphs/contri
 
 ## License
 This project is licensed under the GNU General Public License - see [LICENSE](LICENSE) for more details
-
-![Discord Logo](https://raw.githubusercontent.com/ttamre/ggwp/master/assets/discord.png?token=AEHSFBDMAHTZRME4OQIYSOS5DEM3Y)
-![Riot Logo](https://raw.githubusercontent.com/ttamre/ggwp/master/assets/riot.png?token=AEHSFBEEXPWOQ6FNW7VNFZK5DEM3S)
