@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 File: bot.py
@@ -16,7 +16,9 @@ logging.basicConfig(level=logging.INFO)
 class Bot(discord.Client):
     async def on_ready(self):
         print("\nLogged in as {}\n".format(self.user))
-        self.client = RiotGamesClient()
+        print("A discord bot that allows users to fetch their League of Legends stats")
+        print("Developed and maintained as a personal project by Tem Tamre (ttamre@ualberta.ca")
+        print("Source code available at https://github.com/ttamre/ggwp")
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -60,6 +62,16 @@ class Bot(discord.Client):
                     output_message = "**Invalid input**, try `./game summoner_name` for a summoner that is in an active game"
                 logging.info("INFO: Sending RiotGamesClient.get_summoner_rank() response to text channel in Bot.on_message()")
                 await message.channel.send(output_message)
+
+            if "author" in input_message[0]:
+                logging.info("INFO: Executing author message in Bot.on_message()")
+                logging.info("INFO: Sending author data to text channel in Bot.on_message()")
+                author = "**Author:** Tem Tamre"
+                contact = "**Contact:** ttamre@ualberta.ca"
+                github = "**Github:** www.github.com/ttamre"
+                await message.channel.send(author)
+                await message.channel.send(contact)
+                await message.channel.send(github)
 
 
 if __name__ == "__main__":
