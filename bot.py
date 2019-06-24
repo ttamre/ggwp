@@ -35,8 +35,16 @@ class Bot(discord.Client):
                 await message.channel.send(output_message)
             
             if "mastery" in input_message[0]:
-                summoner_name = input_message[1]
-                champion_name = input_message[2]
+                with open("spaced_names.txt") as f:
+                    champions_with_spaces = f.readlines()
+                
+                if any(champions_with_spaces) in input_message:
+                    summoner_name = "".join(input_message[1:-2])
+                    champion_name = "".join(input_message[-2:])
+                else:
+                    summoner_name = "".join(input_message[1:-1])
+                    champion_name = input_message[-1]
+
                 logging.info("INFO: Executing RiotGamesClient.get_champion_mastery() in Bot.on_message()")
                 output_message = client.get_champion_mastery(summoner_name, champion_name)
                 if not output_message:

@@ -5,7 +5,7 @@ File: riot_client.py
 Description: Riot games client for the discord bot to use to make API requests
 
 Features
-- Get summoner rank
+- Get summoner rank         ?
 - Get champion mastery      https://developer.riotgames.com/api-methods/#champion-mastery-v4/GET_getChampionMastery
 - Current game info         https://developer.riotgames.com/api-methods/#spectator-v4/GET_getCurrentGameInfoBySummoner
 
@@ -78,7 +78,7 @@ class RiotGamesClient():
                 logging.error("ERROR: Response code {} in league_client.get_champion_mastery()".format(response.status_code))
             else:
                 logging.error("ERROR: Generic error in league_client.get_champion_mastery()")
-                logging.error(e)
+            logging.error(e)
 
     def get_current_game_info(self, summoner_name:str):
         """
@@ -96,14 +96,14 @@ class RiotGamesClient():
             return "{summoner} is {time} minutes into a {mode} game".format(
                 summoner=summoner_name,
                 time=self.seconds_to_time(json_object["gameLength"]),
-                mode=self.queue_ids[json_object["gameQueueConfigId"]]
+                mode=self.queue_ids.get(json_object["gameQueueConfigId"], "???")
             )
         except Exception as e:
             if response.status_code != 200:
                 logging.error("ERROR: Response code {} in league_client.get_current_game_info()".format(response.status_code))
             else:
                 logging.error("ERROR: Generic error in league_client.get_current_game_info()")
-                logging.error(e)
+            logging.error(e)
 
 
     def _get_summoner_id(self, summoner_name:str):
@@ -142,7 +142,7 @@ class RiotGamesClient():
                 logging.error("ERROR: Response code {} in league_client.get_champion_id()".format(response.status_code))
             else:
                 logging.error("ERROR: Generic error in league_client.get_champion_id()")
-                logging.error(e)
+            logging.error(e)
 
     def seconds_to_time(self, seconds):
         """
