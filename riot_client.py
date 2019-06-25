@@ -32,6 +32,7 @@ class RiotGamesClient():
         self.ddragon_host = "http://ddragon.leagueoflegends.com"
         self.api_key = self.load_secrets()
         self.headers = self.generate_headers()
+        self.queue_types = {"RANKED_FLEX_SR": 440, "RANKED_SOLO_5x5": 420}
         self.queue_ids = {
             0: "Custom",
             430: "Normal Blind",
@@ -48,7 +49,26 @@ class RiotGamesClient():
         :param str:summoner_name    Sanitized summoner name
         :return str:                Output message to write to text channel
         """
-        return "Rank lookup functionality not yet implemented"
+        summoner_id = self._get_summoner_id(summoner_name)
+        url = self.riot_host + "/lol/league/v4/entries/by-summoner/{sid}".format(sid=summoner_id)
+        response = requests.get(url, headers=self.headers)
+        try:
+            json_object = json.loads(response.text)
+            queues = []
+            for obj in json_object:
+                queue_id = self.queue_types.get(obj["queueType"], '')
+                queue = self.queue_ids.get(queue_id, '')
+                rank = "{tier} {rank}".format(tier=obj["tier"].title(), rank=obj["rank"])
+                lp = obj["leaguePoints"]
+                queues.append("**{queue}: {rank}** {lp}LP".format(queue=queue, rank=rank, lp=lp))
+            return queues
+        except Exception as e:
+            if response.status_code != 200:
+                logging.error("ERROR: Response code {} in league_client.get_summoner_rank()".format(response.status_code))
+                logging.error("Summoner: {s} ({sid})".format(s=summoner_name, sid=summoner_id))
+            else:
+                logging.error("ERROR: Generic error in league_client.get_summoner_rank()")
+            logging.error(e)
 
     def get_champion_mastery(self, summoner_name:str, champion_name:str):
         """
@@ -76,6 +96,8 @@ class RiotGamesClient():
         except Exception as e:
             if response.status_code != 200:
                 logging.error("ERROR: Response code {} in league_client.get_champion_mastery()".format(response.status_code))
+                logging.error("Summoner: {s} ({sid})".format(s=summoner_name, sid=summoner_id))
+                logging.error("Champion: {c} ({cid})".format(c=champion_name, cid=champion_id))
             else:
                 logging.error("ERROR: Generic error in league_client.get_champion_mastery()")
             logging.error(e)
@@ -91,9 +113,8 @@ class RiotGamesClient():
         url = self.riot_host + "/lol/spectator/v4/active-games/by-summoner/{sid}".format(sid=summoner_id)
         response = requests.get(url, headers=self.headers)
         try:
-            json_object = json.load(response.text)
-            print(json.dumps(json_object, indent=2))
-            return "{summoner} is {time} minutes into a {mode} game".format(
+            json_object = json.loads(response.text)
+            return "**{summoner}** is **{time}** minutes into a **{mode}** game".format(
                 summoner=summoner_name,
                 time=self.seconds_to_time(json_object["gameLength"]),
                 mode=self.queue_ids.get(json_object["gameQueueConfigId"], "???")
@@ -101,6 +122,7 @@ class RiotGamesClient():
         except Exception as e:
             if response.status_code != 200:
                 logging.error("ERROR: Response code {} in league_client.get_current_game_info()".format(response.status_code))
+                logging.error("Summoner: {s} ({sid})".format(s=summoner_name, sid=summoner_id))
             else:
                 logging.error("ERROR: Generic error in league_client.get_current_game_info()")
             logging.error(e)
