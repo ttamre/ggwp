@@ -60,7 +60,7 @@ class RiotGamesClient():
                 queue = self.queue_ids.get(queue_id, '')
                 rank = "{tier} {rank}".format(tier=obj["tier"].title(), rank=obj["rank"])
                 lp = obj["leaguePoints"]
-                queues.append("**{queue}: {rank}** {lp}LP".format(queue=queue, rank=rank, lp=lp))
+                queues.append("**{queue}:** {rank} {lp}LP".format(queue=queue, rank=rank, lp=lp))
             return queues
         except Exception as e:
             if response.status_code != 200:
@@ -154,6 +154,7 @@ class RiotGamesClient():
         :param str:summoner_name    Sanitized summoner name
         :return str:                Summoner ID
         """
+        champion_name = champion_name.replace(" ", "")
         url = self.ddragon_host + "/cdn/6.24.1/data/en_US/champion/{name}.json".format(name=champion_name)
         response = requests.get(url)
         try:

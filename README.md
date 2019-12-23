@@ -21,7 +21,7 @@ Keep a file named `secrets.json` in the root project directory and structure it 
 
 Then, enter the following in the terminal (with python3)
 ```bash
-python bot.py
+python ggwp.py
 ```
 
 ### Commands
