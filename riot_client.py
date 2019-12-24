@@ -5,7 +5,7 @@ File: riot_client.py
 Description: Riot games client for the discord bot to use to make API requests
 
 Features
-- Get summoner rank         ?
+- Get summoner rank         https://developer.riotgames.com/apis#league-v4/GET_getLeagueEntriesForSummoner
 - Get champion mastery      https://developer.riotgames.com/api-methods/#champion-mastery-v4/GET_getChampionMastery
 - Current game info         https://developer.riotgames.com/api-methods/#spectator-v4/GET_getCurrentGameInfoBySummoner
 
@@ -191,4 +191,4 @@ class RiotGamesClient():
     def load_secrets(self):
         with open("secrets.json") as f:
             json_object = json.load(f)
-            return json_object["RIOT_API_KEY"]
+        return json_object["RIOT_API_KEY"]

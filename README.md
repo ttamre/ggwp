@@ -15,7 +15,8 @@ Keep a file named `secrets.json` in the root project directory and structure it 
 ```json
 {
     "RIOT_API_KEY": "YOUR_RIOT_DEVELOPER_API_KEY",
-    "DISCORD_BOT_TOKEN": "YOUR_DISCORD_DEVELOPER_BOT_TOKEN"
+    "DISCORD_BOT_TOKEN": "YOUR_DISCORD_DEVELOPER_BOT_TOKEN",
+    "OWNERS": ["USERS_ALLOWED_TO_TURN_THE_BOT_OFF", "FORMATTED AS FOLLOWS:", "user#0000"]
 }
 ```
 
@@ -29,6 +30,8 @@ python ggwp.py
 ./rank summoner_name                    # Get summoner rank
 ./mastery summoner_name champion_name   # Get summoner mastery rank for a champion
 ./game summoner_name                    # Get game data for a summoner that's in game
+./help                                  # View all available commands
+./exit                                  # Exit the bot (only users in secrets.json["OWNERS"] can use this command)
 ```
 
 ## Contributing
