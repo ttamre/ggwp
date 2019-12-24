@@ -1,7 +1,7 @@
 # GGWP
 A discord bot that allows users to fetch their League of Legends stats
 
-**Status:** Development, not stable
+**Status:** Local version complete
 ### Installation
 ```batch
 mkdir ggwp-bot
