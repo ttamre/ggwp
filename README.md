@@ -1,11 +1,9 @@
 # GGWP
 A discord bot that allows users to fetch their League of Legends stats
 
-**Status:** Development, not stable
+**Status:** Local version complete
 ### Installation
-```batch
-mkdir ggwp-bot
-cd ggwp-bot
+```bash
 git clone https://github.com/ttamre/ggwp.git
 ```
 
@@ -16,9 +14,10 @@ Keep a file named `secrets.json` in the root project directory and structure it 
 {
     "RIOT_API_KEY": "YOUR_RIOT_DEVELOPER_API_KEY",
     "DISCORD_BOT_TOKEN": "YOUR_DISCORD_DEVELOPER_BOT_TOKEN",
-    "OWNERS": ["USERS_ALLOWED_TO_TURN_THE_BOT_OFF", "FORMATTED AS FOLLOWS:", "user#0000"]
+    "OWNERS": ["user#0000"]
 }
 ```
+**Note:** The `OWNERS` field is a list of users that are able to exit the bot
 
 Then, enter the following in the terminal (with python3)
 ```bash
