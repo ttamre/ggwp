@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """
 ggwp - A League of Legends stat fetching Discord bot
 Copyright (C) 2019 Tem Tamre
@@ -17,31 +15,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+File: test_bot.py
+Description: Unit test for bot.py
 
-File: ggwp.py
-Description: Main callable file for the GGWP discord bot
-Usage: $ python3 ggwp.py
+# TODO mocking RiotClient
 """
 
-import json
-import logging
+import unittest
 from bot import Bot
 
-__author__ = "Tem Tamre"
-__contact__ = "ttamre@ualberta.ca"
 
-logging.basicConfig(level=logging.INFO)
+class TestBot(unittest.TestCase):
+    def setUp(self):
+        self.bot = Bot()
 
-license_text = """ggwp Copyright (C) 2019 Tem Tamre
-    This program comes with ABSOLUTELY NO WARRANTY.
-    This is free software, and you are welcome to redistribute it under certain conditions.
-    For further information, please refer to the source at which you obtained this software.
-"""
+    def test_help(self):
+        assert isinstance(self.bot._help(), str)
 
-if __name__ == "__main__":
-    with open("secrets.json") as f:
-        token = json.load(f)["DISCORD_BOT_TOKEN"]
+    def test_author(self):
+        assert isinstance(self.bot._author(), str)
     
-    logging.info(license_text)
-    bot = Bot()
-    bot.run(token)
+    def tearDown(self):
+        del self.bot
