@@ -176,7 +176,6 @@ class RiotGamesClient():
         """
         sec = timedelta(seconds=seconds)
         d = datetime(1,1,1) + sec
-        print("{min}:{sec}".format(min=d.minute, sec=d.second))
         return "{min}:{sec}".format(min=d.minute, sec=d.second)
 
     def generate_headers(self):
