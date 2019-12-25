@@ -14,7 +14,7 @@ Keep a file named `secrets.json` in the root project directory and structure it 
 {
     "RIOT_API_KEY": "YOUR_RIOT_DEVELOPER_API_KEY",
     "DISCORD_BOT_TOKEN": "YOUR_DISCORD_DEVELOPER_BOT_TOKEN",
-    "OWNERS": ["user#0000", "user#0001", ...]
+    "OWNERS": ["user#0000"]
 }
 ```
 **Note:** The `OWNERS` field is a list of users that are able to exit the bot
