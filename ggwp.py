@@ -32,7 +32,8 @@ __contact__ = "ttamre@ualberta.ca"
 
 logging.basicConfig(level=logging.INFO)
 
-license_text = """ggwp Copyright (C) 2019 Tem Tamre
+license_text = """
+ggwp Copyright (C) 2019 Tem Tamre
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it under certain conditions.
     For further information, please refer to the source at which you obtained this software.
