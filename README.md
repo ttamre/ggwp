@@ -1,7 +1,10 @@
 # GGWP
+[![CircleCI](https://circleci.com/gh/ttamre/ggwp/tree/master.svg?style=svg)](https://circleci.com/gh/ttamre/ggwp/tree/master)
+
 A discord bot that allows users to fetch their League of Legends stats
 
 **Status:** Local version complete
+
 ### Installation
 ```bash
 git clone https://github.com/ttamre/ggwp.git
