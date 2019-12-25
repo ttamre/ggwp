@@ -25,7 +25,7 @@ from riot_client import RiotGamesClient
 
 class TestRiotClient(unittest.TestCase):
     def setUp(self):
-        self.client = RiotGamesClient(secrets_path="secrets_template.json")
+        self.client = RiotGamesClient()
 
     def test_init(self):
         assert self.client.riot_host

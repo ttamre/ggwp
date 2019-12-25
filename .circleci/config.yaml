@@ -48,6 +48,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
+            echo '{"RIOT_API_KEY": "riot_api_key","DISCORD_BOT_TOKEN": "discord_bot_token","OWNERS": ["user#0000"]}' >> secrets.json
             python -m unittest discover tests
 
       - store_artifacts:

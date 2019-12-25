@@ -42,10 +42,10 @@ logging.basicConfig(level=logging.INFO)
 
 
 class RiotGamesClient():
-    def __init__(self, secrets_path="secrets.json"):
+    def __init__(self):
         self.riot_host = "https://na1.api.riotgames.com"
         self.ddragon_host = "http://ddragon.leagueoflegends.com"
-        self.api_key = self._get_api_key(path=secrets_path)
+        self.api_key = self._get_api_key()
         self.headers = self.generate_headers()
         self.queue_types = {"RANKED_FLEX_SR": 440, "RANKED_SOLO_5x5": 420}
         self.queue_ids = {
@@ -212,7 +212,7 @@ class RiotGamesClient():
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
         }
     
-    def _get_api_key(self, path):
-        with open(path) as f:
+    def _get_api_key(self):
+        with open("secrets.json") as f:
             json_object = json.load(f)
         return json_object["RIOT_API_KEY"]
