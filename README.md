@@ -1,9 +1,9 @@
 # GGWP
 [![CircleCI](https://circleci.com/gh/ttamre/ggwp/tree/master.svg?style=svg)](https://circleci.com/gh/ttamre/ggwp/tree/master)
 
-A discord bot that allows users to fetch their League of Legends stats
+A locally-hosted discord bot that allows users to fetch their League of Legends stats
 
-**Status:** Local version complete
+**Status:** Stable
 
 ### Installation
 ```bash
