@@ -20,11 +20,10 @@ Keep a file named `secrets.json` in the root project directory and structure it 
     "OWNERS": ["user#0000"]
 }
 ```
-**Note:** The `OWNERS` field is a list of users that are able to exit the bot
 
-Then, enter the following in the terminal (with python3)
+Then run
 ```bash
-python ggwp.py
+python3 ggwp.py
 ```
 
 ### Commands
@@ -33,16 +32,8 @@ python ggwp.py
 ./mastery summoner_name champion_name   # Get summoner mastery rank for a champion
 ./game summoner_name                    # Get game data for a summoner that's in game
 ./help                                  # View all available commands
-./exit                                  # Exit the bot (only users in secrets.json["OWNERS"] can use this command)
+./exit                                  # Exit the bot (must be an owner to use this)
 ```
-
-## Contributing
-Please email me at ttamre@ualberta.ca for details on code of conduct, and the process for submitting pull requests.
-
-## Authors
-* **Tem Tamre** - *Project Lead/Owner* - [Github](https://github.com/ttamre)
-
-See also the list of [contributors](https://github.com/ttamre/ggwp/graphs/contributors) who participated in this project.
 
 ## License
 This project is licensed under the GNU General Public License - see [LICENSE](LICENSE) for more details
